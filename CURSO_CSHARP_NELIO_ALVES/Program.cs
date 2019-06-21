@@ -7,32 +7,34 @@ namespace CURSO_CSHARP_NELIO_ALVES
     {
         static void Main(string[] args)
         {
-            int n1 = 3 + 4 * 2;
-            Console.WriteLine(n1);
+            int a = 10;
+            Console.WriteLine(a);
 
-            int n2 = (3 + 4) * 2;
-            Console.WriteLine(n2);
+            a += 2;
+            Console.WriteLine(a);
 
-            int n3 = 17 % 3;
-            Console.WriteLine(n3);
+            a -= 3;
+            Console.WriteLine(a);
 
-            int n4 = 10 / 8;
-            Console.WriteLine(n4);
+            a *= 4;
+            Console.WriteLine(a);
 
-            double n5 = 10.0 / 8.0;
-            Console.WriteLine(n5);
-            Console.WriteLine("-----------------------------------");
+            string s = "ABC";
+            Console.WriteLine(s);
 
-            double a = 1.0;
-            double b = -3.0;
-            double c = -4.0;
+            s += "DEF";
+            Console.WriteLine(s);
 
-            double delta = Math.Pow(b, 2.0) - (4.0 * a * c);
+            Console.WriteLine("--------------------------");
 
-            double x1 = (-b + Math.Sqrt(delta)) / (2.0 * a);
-            double x2 = (-b - Math.Sqrt(delta)) / (2.0 * a);
+            int v = 10;
+            v++;
+            Console.WriteLine(v);
+            v--;
+            Console.WriteLine(v);
 
-            Console.WriteLine($"X1: {x1:F2} - X2: {x2:F2}");
+            int y = ++v;
+            Console.WriteLine(" " + v + " " + y);
         }
     }
 }

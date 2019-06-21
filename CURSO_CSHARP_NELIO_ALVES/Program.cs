@@ -7,25 +7,33 @@ namespace CURSO_CSHARP_NELIO_ALVES
     {
         static void Main(string[] args)
         {
-            float x = 4.5f;
-            double y = x;
+            Console.Write(">>> ");
+            string frase = Console.ReadLine();
 
-            Console.WriteLine(y);
+            Console.Write(">>> ");
+            string x = Console.ReadLine();
 
-            double a = 5.1;
-            float b = (float) a;
+            Console.Write(">>> ");
+            string y = Console.ReadLine();
 
-            Console.WriteLine(b);
+            Console.Write(">>> ");
+            string z = Console.ReadLine();
 
-            double p = 5.3;
-            int q = (int) p;
-
-            Console.WriteLine(q);
-
-            int v1 = 5;
-            int v2 = 2;
-            double resultado = (double) v1 / v2;
-            Console.WriteLine(resultado);
+            Console.Write(">>> ");
+            string[] vet = Console.ReadLine().Split(' ');
+            string p1 = vet[0];
+            string p2 = vet[1];
+            string p3 = vet[2];
+            
+            Console.WriteLine("Você digitou:");
+            Console.WriteLine(" " + frase);
+            Console.WriteLine(" " + x);
+            Console.WriteLine(" " + y);
+            Console.WriteLine(" " + z);
+            Console.WriteLine(" " + p1);
+            Console.WriteLine(" " + p2);
+            Console.WriteLine(" " + p3);
+            
         }
     }
 }

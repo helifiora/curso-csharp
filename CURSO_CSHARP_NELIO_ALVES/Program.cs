@@ -5,39 +5,62 @@ namespace CURSO_CSHARP_NELIO_ALVES
 {
     class Program
     {
+        static void exercicio()
+        {
+            string produto1 = "Computador";
+            string produto2 = "Mesa de Escritório";
+
+            byte idade = 30;
+            uint codigo = 5290;
+            char genero = 'M';
+
+            double preco1 = 2100.0;
+            double preco2 = 650.50;
+            double medida = 53.234567;
+
+            Console.WriteLine("Produtos:");
+            Console.WriteLine($"{produto1}, cujo preço é {preco1:C}");
+            Console.WriteLine($"{produto2}, cujo preço é {preco2:C}");
+            Console.WriteLine();
+
+            Console.WriteLine($"Registro: {idade} anos de idade, código {codigo} e gênero: {genero}");
+            Console.WriteLine();
+
+            Console.WriteLine($"Medida com oito casa decimais: {medida:F8}");
+            Console.WriteLine($"Arredondado (três casas decimais): {medida:F3}");
+            Console.WriteLine("Separar decimal invariant culture: " +
+                              medida.ToString("F3", CultureInfo.InvariantCulture));
+        }
+
         static void Main(string[] args)
         {
-            bool completo = false;
-            char genero = 'f';
-            char letra = '\u0041';
-            float n5 = 4.5f;
-            double n6 = 4.5;
-            string nome = "Maria Green!";
-            Console.WriteLine(completo);
+            Console.Write("Bom Dia!");
+            Console.WriteLine(" Boa Tarde!");
+            Console.WriteLine("Boa Noite!");
+            Console.WriteLine("---------------------------");
+
+            char genero = 'F';
+            int idade = 17;
+            double saldo = 10.35784;
+            string nome = "Marina Llase";
+            Console.WriteLine(nome);
             Console.WriteLine(genero);
-            Console.WriteLine(letra);
-            Console.WriteLine(n5);
-            Console.WriteLine(n6);
-            Console.WriteLine(nome);
+            Console.WriteLine(idade);
+            Console.WriteLine(saldo);
+            Console.WriteLine(saldo.ToString("F2"));
+            Console.WriteLine(saldo.ToString("F4"));
+            Console.WriteLine(saldo.ToString("F4", CultureInfo.InvariantCulture));
+            Console.WriteLine("---------------------------");
 
-            nome = "John Lennon!";
-            Console.WriteLine(nome);
+            // Placeholders
+            Console.WriteLine("{0} tem {1} anos e tem saldo igual a {2:C} reais", nome, idade, saldo);
+            // Interpolação
+            Console.WriteLine($"{nome} tem {idade} anos e tem saldo igual a {saldo:C} reais");
+            // Concatenação
+            Console.WriteLine(nome + " tem " + idade + " anos e tem saldo igual a " + saldo.ToString("C") + " reais");
 
-            object obj1 = "Alex Brown";
-            Console.WriteLine(obj1);
-
-            object obj2 = 4.5f;
-            Console.WriteLine(obj2);
-
-            int nIntMin = int.MinValue;
-            int nIntMax = int.MaxValue;
-            Console.WriteLine(nIntMin + " " + nIntMax);
-
-            sbyte nByteMax = sbyte.MaxValue;
-            Console.WriteLine(nByteMax);
-
-            decimal nDecimal = decimal.MaxValue;
-            Console.WriteLine(nDecimal);
+            Console.WriteLine("-----------------------------");
+            exercicio();
         }
     }
 }

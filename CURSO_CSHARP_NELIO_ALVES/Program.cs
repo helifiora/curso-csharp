@@ -7,19 +7,18 @@ namespace CURSO_CSHARP_NELIO_ALVES
     {
         static void Main(string[] args)
         {
-            Console.Write("Digite um número: ");
-            double x = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            Console.Write("Quantos Números Inteiros Você Vai Digitar? ");
+            int qtd = int.Parse(Console.ReadLine());
 
-            while (x >= 0.0)
+            int soma = 0;
+            for (int i = 1; i <= qtd; i++)
             {
-                double raiz = Math.Sqrt(x);
-                Console.WriteLine(raiz);
-                
-                Console.Write("Digite outro número: ");
-                x = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                Console.Write($"Valor #{i}: ");
+                int valor = int.Parse(Console.ReadLine());
+                soma += valor;
             }
 
-            Console.WriteLine("Número Negativo!");
+            Console.WriteLine($"Soma: {soma}");
         }
     }
 }

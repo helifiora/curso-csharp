@@ -7,34 +7,25 @@ namespace CURSO_CSHARP_NELIO_ALVES
     {
         static void Main(string[] args)
         {
-            int a = 10;
-            Console.WriteLine(a);
+            float x = 4.5f;
+            double y = x;
 
-            a += 2;
-            Console.WriteLine(a);
+            Console.WriteLine(y);
 
-            a -= 3;
-            Console.WriteLine(a);
+            double a = 5.1;
+            float b = (float) a;
 
-            a *= 4;
-            Console.WriteLine(a);
+            Console.WriteLine(b);
 
-            string s = "ABC";
-            Console.WriteLine(s);
+            double p = 5.3;
+            int q = (int) p;
 
-            s += "DEF";
-            Console.WriteLine(s);
+            Console.WriteLine(q);
 
-            Console.WriteLine("--------------------------");
-
-            int v = 10;
-            v++;
-            Console.WriteLine(v);
-            v--;
-            Console.WriteLine(v);
-
-            int y = ++v;
-            Console.WriteLine(" " + v + " " + y);
+            int v1 = 5;
+            int v2 = 2;
+            double resultado = (double) v1 / v2;
+            Console.WriteLine(resultado);
         }
     }
 }

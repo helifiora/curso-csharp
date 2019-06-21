@@ -5,62 +5,34 @@ namespace CURSO_CSHARP_NELIO_ALVES
 {
     class Program
     {
-        static void exercicio()
-        {
-            string produto1 = "Computador";
-            string produto2 = "Mesa de Escritório";
-
-            byte idade = 30;
-            uint codigo = 5290;
-            char genero = 'M';
-
-            double preco1 = 2100.0;
-            double preco2 = 650.50;
-            double medida = 53.234567;
-
-            Console.WriteLine("Produtos:");
-            Console.WriteLine($"{produto1}, cujo preço é {preco1:C}");
-            Console.WriteLine($"{produto2}, cujo preço é {preco2:C}");
-            Console.WriteLine();
-
-            Console.WriteLine($"Registro: {idade} anos de idade, código {codigo} e gênero: {genero}");
-            Console.WriteLine();
-
-            Console.WriteLine($"Medida com oito casa decimais: {medida:F8}");
-            Console.WriteLine($"Arredondado (três casas decimais): {medida:F3}");
-            Console.WriteLine("Separar decimal invariant culture: " +
-                              medida.ToString("F3", CultureInfo.InvariantCulture));
-        }
-
         static void Main(string[] args)
         {
-            Console.Write("Bom Dia!");
-            Console.WriteLine(" Boa Tarde!");
-            Console.WriteLine("Boa Noite!");
-            Console.WriteLine("---------------------------");
+            int n1 = 3 + 4 * 2;
+            Console.WriteLine(n1);
 
-            char genero = 'F';
-            int idade = 17;
-            double saldo = 10.35784;
-            string nome = "Marina Llase";
-            Console.WriteLine(nome);
-            Console.WriteLine(genero);
-            Console.WriteLine(idade);
-            Console.WriteLine(saldo);
-            Console.WriteLine(saldo.ToString("F2"));
-            Console.WriteLine(saldo.ToString("F4"));
-            Console.WriteLine(saldo.ToString("F4", CultureInfo.InvariantCulture));
-            Console.WriteLine("---------------------------");
+            int n2 = (3 + 4) * 2;
+            Console.WriteLine(n2);
 
-            // Placeholders
-            Console.WriteLine("{0} tem {1} anos e tem saldo igual a {2:C} reais", nome, idade, saldo);
-            // Interpolação
-            Console.WriteLine($"{nome} tem {idade} anos e tem saldo igual a {saldo:C} reais");
-            // Concatenação
-            Console.WriteLine(nome + " tem " + idade + " anos e tem saldo igual a " + saldo.ToString("C") + " reais");
+            int n3 = 17 % 3;
+            Console.WriteLine(n3);
 
-            Console.WriteLine("-----------------------------");
-            exercicio();
+            int n4 = 10 / 8;
+            Console.WriteLine(n4);
+
+            double n5 = 10.0 / 8.0;
+            Console.WriteLine(n5);
+            Console.WriteLine("-----------------------------------");
+
+            double a = 1.0;
+            double b = -3.0;
+            double c = -4.0;
+
+            double delta = Math.Pow(b, 2.0) - (4.0 * a * c);
+
+            double x1 = (-b + Math.Sqrt(delta)) / (2.0 * a);
+            double x2 = (-b - Math.Sqrt(delta)) / (2.0 * a);
+
+            Console.WriteLine($"X1: {x1:F2} - X2: {x2:F2}");
         }
     }
 }

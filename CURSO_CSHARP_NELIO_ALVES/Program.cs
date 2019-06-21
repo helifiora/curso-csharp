@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.SymbolStore;
 using System.Globalization;
 
 namespace CURSO_CSHARP_NELIO_ALVES
@@ -8,21 +7,36 @@ namespace CURSO_CSHARP_NELIO_ALVES
     {
         static void Main(string[] args)
         {
-            bool c1 = 2 > 3 && 4 != 5;
-            Console.WriteLine(c1);
+            int x = 10;
+            
+            Console.WriteLine("Bom dia!");
+            
+            if(x > 5)
+                Console.WriteLine("Boa tarde!");
 
-            bool c2 = 2 > 3 || 4 != 5;
-            Console.WriteLine(c2);
+            Console.WriteLine("Boa noite!");
 
-            bool c3 = !(2 > 3) && 4 != 5;
-            Console.WriteLine(c3);
+            Console.WriteLine("-------------------------------------------");
 
-            Console.WriteLine("---------------------------------------");
+            Console.WriteLine("Entre com o número inteiro: ");
+            int v = int.Parse(Console.ReadLine());
+            
+            if(v % 2 == 0)
+                Console.WriteLine($"Valor {v} é par!");
+            else
+                Console.WriteLine($"Valor {v} é ímpar!");
 
-            bool c4 = 10 < 5;
-            bool c5 = c2 || c3 && c4;
-            Console.WriteLine(c4);
-            Console.WriteLine(c5);
+            Console.WriteLine("--------------------------------------------");
+
+            Console.Write("Qual a Hora Atual? ");
+            int hora = int.Parse(Console.ReadLine());
+            
+            if(hora < 12)
+                Console.WriteLine("Bom Dia!");
+            else if(hora < 18)
+                Console.WriteLine("Boa Tarde!");
+            else
+                Console.WriteLine("Boa Noite!");
         }
     }
 }

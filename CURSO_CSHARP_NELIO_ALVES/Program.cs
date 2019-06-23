@@ -3,64 +3,26 @@ using System.Globalization;
 
 namespace CURSO_CSHARP_NELIO_ALVES
 {
-    class Produto
-    {
-        public string Nome { get; set; }
-        public double Preco { get; set; }
-        public int Qtde { get; set; }
-
-        public double ValorTotalEstoque()
-        {
-            return Preco * Qtde;
-        }
-        public override string ToString()
-        {
-            return $"{Nome}, R$ {Preco:F2}, {Qtde} unidades, Total: R$ {ValorTotalEstoque():F2}";
-        }
-
-        public void AdicionaProdutos(int qtde)
-        {
-            Qtde += qtde;
-        }
-
-        public void RemoverProdutos(int qtde)
-        {
-            Qtde -= qtde;
-        }
-    }
-    
     class Program
     {
         static void Main(string[] args)
         {
-            Produto p = new Produto();
-            Console.WriteLine("Entre os dados do produto:");
-            
-            Console.Write("Nome: ");
-            p.Nome = Console.ReadLine();
+            Console.Write("Entre o valor do raio: ");
+            double raio = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            double circ = Circunferencia(raio);
+            double volume = Volume(raio);
+            Console.WriteLine($"Circunferência: {circ:F2}");
+            Console.WriteLine($"Volume: {volume}");
+        }
 
-            Console.Write("Preço: ");
-            p.Preco = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+        static double Circunferencia(double raio)
+        {
+            return 2 * Math.PI * raio;
+        }
 
-            Console.Write("Quantidade: ");
-            p.Qtde = int.Parse(Console.ReadLine());
-
-            Console.WriteLine($"Dados do Produto: {p}");
-
-            Console.WriteLine();
-            Console.Write("Digite o número de produtos a serem adicionados: ");
-            int qtde = int.Parse(Console.ReadLine());
-            p.AdicionaProdutos(qtde);
-
-            Console.WriteLine();
-            Console.WriteLine($"Dados Atualizados: {p}");
-
-            Console.Write("Digite o número de produtos para serem removidos: ");
-            qtde = int.Parse(Console.ReadLine());
-            p.RemoverProdutos(qtde);
-
-            Console.WriteLine();
-            Console.WriteLine($"Dados Atualizados: {p}");
+        static double Volume(double raio)
+        {
+            return (4.0 / 3.0) * Math.PI * Math.Pow(raio, 3);
         }
     }
 }

@@ -8,8 +8,12 @@ namespace CURSO_CSHARP_NELIO_ALVES
         public double A { get; set; }
         public double B { get; set; }
         public double C { get; set; }
-        
-        
+        public double Area()
+        {
+            double p = (A + B + C) / 2.0;
+            double area = Math.Sqrt(p * (p - A) * (p - B) * (p - C));
+            return area;
+        }
     }
     
     class Program
@@ -29,11 +33,8 @@ namespace CURSO_CSHARP_NELIO_ALVES
             y.B = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
             y.C = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-            double p = (x.A + x.B + x.C) / 2.0;
-            double areaX = Math.Sqrt(p * (p - x.A) * (p - x.B) * (p - x.C));
-
-            p = (y.A + y.B + y.C) / 2.0;
-            double areaY = Math.Sqrt(p * (p - y.A) * (p - y.B) * (p - y.C));
+            double areaX = x.Area();
+            double areaY = y.Area();
 
             Console.WriteLine($"Area de X: {areaX:F4}");
             Console.WriteLine($"Area de Y: {areaY:F4}");
@@ -41,7 +42,7 @@ namespace CURSO_CSHARP_NELIO_ALVES
             if(areaX > areaY)
                 Console.WriteLine("Area maior: X");
             else
-                Console.WriteLine("Area menor: Y");
+                Console.WriteLine("Area maior: Y");
         }
     }
 }

@@ -15,6 +15,16 @@ namespace CURSO_CSHARP_NELIO_ALVES
             Preco = preco;
             Quantidade = quantidade;
         }
+        public Produto()
+        {
+            
+        }
+        public Produto(string nome, double preco)
+        {
+            Nome = nome;
+            Preco = preco;
+            Quantidade = 5;
+        }
 
         public double ValorTotalEstoque()
         {
@@ -47,10 +57,9 @@ namespace CURSO_CSHARP_NELIO_ALVES
             Console.Write("Preço: ");
             double preco = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-            Console.Write("Quantidade no Estoque: ");
-            int qtde = int.Parse(Console.ReadLine());
-            
-            Produto p = new Produto(nome, preco, qtde);
+            Produto p = new Produto(nome, preco);
+
+            int qtde;
             Console.WriteLine($"Dados do Produto: {p}");
             Console.WriteLine();
 

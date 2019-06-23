@@ -3,16 +3,29 @@ using System.Globalization;
 
 namespace CURSO_CSHARP_NELIO_ALVES
 {
-    class Triangulo
+    class Produto
     {
-        public double A { get; set; }
-        public double B { get; set; }
-        public double C { get; set; }
-        public double Area()
+        public string Nome { get; set; }
+        public double Preco { get; set; }
+        public int Qtde { get; set; }
+
+        public double ValorTotalEstoque()
         {
-            double p = (A + B + C) / 2.0;
-            double area = Math.Sqrt(p * (p - A) * (p - B) * (p - C));
-            return area;
+            return Preco * Qtde;
+        }
+        public override string ToString()
+        {
+            return $"{Nome}, R$ {Preco:F2}, {Qtde} unidades, Total: R$ {ValorTotalEstoque():F2}";
+        }
+
+        public void AdicionaProdutos(int qtde)
+        {
+            Qtde += qtde;
+        }
+
+        public void RemoverProdutos(int qtde)
+        {
+            Qtde -= qtde;
         }
     }
     
@@ -20,29 +33,34 @@ namespace CURSO_CSHARP_NELIO_ALVES
     {
         static void Main(string[] args)
         {
-            Triangulo x = new Triangulo();
-            Triangulo y = new Triangulo();
-
-            Console.WriteLine("Entre com as medidas do Triangulo X: ");
-            x.A = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            x.B = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            x.C = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-
-            Console.WriteLine("Entre com as medidas do Triangulo Y: ");
-            y.A = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            y.B = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            y.C = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-
-            double areaX = x.Area();
-            double areaY = y.Area();
-
-            Console.WriteLine($"Area de X: {areaX:F4}");
-            Console.WriteLine($"Area de Y: {areaY:F4}");
+            Produto p = new Produto();
+            Console.WriteLine("Entre os dados do produto:");
             
-            if(areaX > areaY)
-                Console.WriteLine("Area maior: X");
-            else
-                Console.WriteLine("Area maior: Y");
+            Console.Write("Nome: ");
+            p.Nome = Console.ReadLine();
+
+            Console.Write("Preço: ");
+            p.Preco = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            Console.Write("Quantidade: ");
+            p.Qtde = int.Parse(Console.ReadLine());
+
+            Console.WriteLine($"Dados do Produto: {p}");
+
+            Console.WriteLine();
+            Console.Write("Digite o número de produtos a serem adicionados: ");
+            int qtde = int.Parse(Console.ReadLine());
+            p.AdicionaProdutos(qtde);
+
+            Console.WriteLine();
+            Console.WriteLine($"Dados Atualizados: {p}");
+
+            Console.Write("Digite o número de produtos para serem removidos: ");
+            qtde = int.Parse(Console.ReadLine());
+            p.RemoverProdutos(qtde);
+
+            Console.WriteLine();
+            Console.WriteLine($"Dados Atualizados: {p}");
         }
     }
 }

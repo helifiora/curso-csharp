@@ -15,10 +15,11 @@ namespace CURSO_CSHARP_NELIO_ALVES
             Preco = preco;
             Quantidade = quantidade;
         }
+
         public Produto()
         {
-            
         }
+
         public Produto(string nome, double preco)
         {
             Nome = nome;
@@ -40,12 +41,13 @@ namespace CURSO_CSHARP_NELIO_ALVES
         {
             Quantidade -= quantidade;
         }
-        
+
         public override string ToString()
         {
             return $"{Nome}, R$ {Preco:F2} - {Quantidade} unidades. Valor Total: R$ {ValorTotalEstoque():F2}";
         }
     }
+
     class Program
     {
         static void Main(string[] args)
@@ -65,16 +67,24 @@ namespace CURSO_CSHARP_NELIO_ALVES
 
             Console.Write("Digite o número de produtos a serem adicionados no estoque: ");
             qtde = int.Parse(Console.ReadLine());
-            
+
             p.AdicionaEstoque(qtde);
             Console.WriteLine($"Dados Atualizados: {p}");
             Console.WriteLine();
 
             Console.Write("Digite o número de produtos a serem removidos no estoque: ");
             qtde = int.Parse(Console.ReadLine());
-            
+
             p.RemoveEstoque(qtde);
             Console.WriteLine($"Dados Atualizados: {p}");
+
+            Produto p2 = new Produto();
+            Produto p3 = new Produto()
+            {
+                Nome = "Helielton",
+                Preco = 5000.0,
+                Quantidade = 20
+            };
         }
     }
 }

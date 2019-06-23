@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace CURSO_CSHARP_NELIO_ALVES
 {
@@ -6,8 +7,36 @@ namespace CURSO_CSHARP_NELIO_ALVES
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("Hello World!");
+            double xA, xB, xC;
+            double yA, yB, yC;
+            
+            Console.WriteLine("Entre com as medidas do triângulo X: ");
+            xA = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            xB = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            xC = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            Console.WriteLine("Entra com as medidas do triângulo Y: ");
+            yA = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            yB = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            yC = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            double p = (xA + xB + xC) / 2.0;
+            double areaX = Math.Sqrt(p * (p - xA) * (p - xB) * (p - xC));
+
+            p = (yA + yB + yC) / 2.0;
+            double areaY = Math.Sqrt(p * (p - yA) * (p - yB) * (p - yC));
+
+            Console.WriteLine($"Área de X: {areaX:F4}");
+            Console.WriteLine($"Área de Y: {areaY:F4}");
+
+            if (areaX > areaY)
+            {
+                Console.WriteLine("Maior Área: X");
+            }
+            else
+            {
+                Console.WriteLine("Maior Área: Y");
+            }
         }
     }
 }

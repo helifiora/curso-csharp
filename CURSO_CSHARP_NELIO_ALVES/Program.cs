@@ -3,48 +3,38 @@ using System.Globalization;
 
 namespace CURSO_CSHARP_NELIO_ALVES
 {
-    public class Produto
+    class ContaBancaria
     {
-        public string Nome;
-        public double Preco;
-        public int Quantidade;
+        public int Numero { get; private set; }
+        public string Titular { get; set; }
+        public double Saldo { get; private set; }
 
-        public Produto(string nome, double preco, int quantidade)
+        public ContaBancaria(int numero, string titular)
         {
-            Nome = nome;
-            Preco = preco;
-            Quantidade = quantidade;
+            Numero = numero;
+            Titular = titular;
         }
 
-        public Produto()
+        public ContaBancaria(int numero, string titular, double depositoInicial) : this(numero, titular)
         {
+            Deposito(depositoInicial);
         }
 
-        public Produto(string nome, double preco)
+        public void Deposito(double quantia)
         {
-            Nome = nome;
-            Preco = preco;
-            Quantidade = 5;
+            Saldo += quantia;
         }
 
-        public double ValorTotalEstoque()
+        public void Saque(double quantia)
         {
-            return Preco * Quantidade;
-        }
-
-        public void AdicionaEstoque(int quantidade)
-        {
-            Quantidade += quantidade;
-        }
-
-        public void RemoveEstoque(int quantidade)
-        {
-            Quantidade -= quantidade;
+            Saldo -= quantia;
+            Saldo *= (1 - 0.05);
         }
 
         public override string ToString()
         {
-            return $"{Nome}, R$ {Preco:F2} - {Quantidade} unidades. Valor Total: R$ {ValorTotalEstoque():F2}";
+            return
+                $"Conta {Numero}, Titular: {Titular}, Saldo: R$ {Saldo.ToString("F2", CultureInfo.InvariantCulture)}";
         }
     }
 
@@ -52,39 +42,46 @@ namespace CURSO_CSHARP_NELIO_ALVES
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Entre os dados do produto:");
-            Console.Write("Nome: ");
-            string nome = Console.ReadLine();
+            Console.Write("Entre o número da conta: ");
+            int numero = int.Parse(Console.ReadLine());
 
-            Console.Write("Preço: ");
-            double preco = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            Console.Write("Entre o titular da conta: ");
+            string titular = Console.ReadLine();
 
-            Produto p = new Produto(nome, preco);
+            Console.Write("Haverá depósito inicial? ");
+            char resp = char.Parse(Console.ReadLine());
 
-            int qtde;
-            Console.WriteLine($"Dados do Produto: {p}");
-            Console.WriteLine();
-
-            Console.Write("Digite o número de produtos a serem adicionados no estoque: ");
-            qtde = int.Parse(Console.ReadLine());
-
-            p.AdicionaEstoque(qtde);
-            Console.WriteLine($"Dados Atualizados: {p}");
-            Console.WriteLine();
-
-            Console.Write("Digite o número de produtos a serem removidos no estoque: ");
-            qtde = int.Parse(Console.ReadLine());
-
-            p.RemoveEstoque(qtde);
-            Console.WriteLine($"Dados Atualizados: {p}");
-
-            Produto p2 = new Produto();
-            Produto p3 = new Produto()
+            ContaBancaria conta;
+            if (resp == 's' || resp == 'S')
             {
-                Nome = "Helielton",
-                Preco = 5000.0,
-                Quantidade = 20
-            };
+                Console.Write("Entre o valor de depósito inicial: ");
+                double depositoInicial = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                conta = new ContaBancaria(numero, titular, depositoInicial);
+            }
+            else
+            {
+                conta = new ContaBancaria(numero, titular);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Dados da conta");
+            Console.WriteLine(conta);
+
+            Console.WriteLine();
+            Console.Write("Entre um valor para depósito: ");
+            double deposito = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            conta.Deposito(deposito);
+
+            Console.WriteLine("Dados da conta atualizados: ");
+            Console.WriteLine(conta);
+
+            Console.WriteLine();
+            Console.Write("Entre um valor para saque: ");
+            double saque = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            conta.Saque(saque);
+
+            Console.WriteLine("Dados da conta atualizados:");
+            Console.WriteLine(conta);
         }
     }
 }

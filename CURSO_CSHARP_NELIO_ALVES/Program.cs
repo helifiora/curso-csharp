@@ -8,36 +8,27 @@ namespace CURSO_CSHARP_NELIO_ALVES
     {
         static void Main(string[] args)
         {
-            int n = int.Parse(Console.ReadLine());
-            
-            int[,] matrix = new int[n, n];
-            for (int i = 0; i < n; i++)
+            HashSet<int> a = new HashSet<int>();
+            HashSet<int> b = new HashSet<int>();
+
+            a.Add(3);
+            a.Add(5);
+            a.Add(8);
+            a.Add(9);
+
+            b.Add(3);
+            b.Add(4);
+            b.Add(5);
+
+            foreach (var valor in a)
             {
-                string[] vet = Console.ReadLine().Split(' ');
-                for (int j = 0; j < n; j++)
-                {
-                    matrix[i, j] = int.Parse(vet[j]);
-                }
+                Console.WriteLine(valor);
             }
 
-            Console.WriteLine("Main Diagonal");
-            for (int i = 0; i < n; i++)
+            foreach (var valor in b)
             {
-                Console.Write(matrix[i, i] + " ");
+                Console.WriteLine(valor);
             }
-
-            Console.WriteLine();
-            int count = 0;
-            for (int i = 0; i < n; i++)
-            {
-                for (int j = 0; j < n; j++)
-                {
-                    if (matrix[i, j] < 0)
-                        count++;
-                }
-            }
-
-            Console.WriteLine("Negative Numbers: " + count);
         }
     }
 }

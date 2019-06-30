@@ -8,18 +8,50 @@ namespace CURSO_CSHARP_NELIO_ALVES
     {
         static void Main(string[] args)
         {
-            Order order = new Order()
-            {
-                Id = 1080,
-                Moment = DateTime.Now,
-                Status = OrderStatus.PendingPayment
-            };
-            Console.WriteLine(order);
+            Console.Write("Enter a department's name: ");
+            string depName = Console.ReadLine();
 
-            string txt = OrderStatus.PendingPayment.ToString();
-            OrderStatus os = Enum.Parse<OrderStatus>("Delivered");
-            Console.WriteLine(txt);
-            Console.WriteLine(os);
+            Console.WriteLine("Enter worker data: ");
+            Console.Write("Name: ");
+            string name = Console.ReadLine();
+
+            Console.Write("Level (Junior/MidLevel/Senior): ");
+            WorkerLevel level = Enum.Parse<WorkerLevel>(Console.ReadLine());
+
+            Console.Write("Base Salary: ");
+            double baseSalary = double.Parse(Console.ReadLine());
+
+            Department department = new Department(depName);
+            Worker worker = new Worker(name, level, baseSalary, department);
+
+            Console.Write("How many contracts to this worker? ");
+            int n = int.Parse(Console.ReadLine());
+
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine($"Enter #{i} contract data: ");
+                Console.Write("(dd/MM/yyyy): ");
+                DateTime date = DateTime.Parse(Console.ReadLine());
+
+                Console.Write("Value per Hour: ");
+                double valuePerHour = double.Parse(Console.ReadLine());
+
+                Console.Write("Duration (hours): ");
+                int hours = int.Parse(Console.ReadLine());
+                HourContract contract = new HourContract(date, valuePerHour, hours);
+                worker.AddContract(contract);
+            }
+
+            Console.WriteLine();
+            Console.Write("Enter the month and year to calculate income (mm/yyyy): ");
+            string monthYear = Console.ReadLine();
+            int month = int.Parse(monthYear.Substring(0, 2));
+            int year = int.Parse(monthYear.Substring(3, 4));
+            
+            Console.WriteLine($"Name: {worker.Name}");
+            Console.WriteLine($"Department: {worker.Department.Name}");
+            Console.WriteLine($"Income for {monthYear}: {worker.Income(year, month)}");
         }
     }
 }

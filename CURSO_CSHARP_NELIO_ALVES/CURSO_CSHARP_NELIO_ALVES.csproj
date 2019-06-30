@@ -7,8 +7,10 @@
 
     <ItemGroup>
       <Compile Remove="entities\**" />
-      <Compile Include="Entities\Enums\OrderStatus.cs" />
-      <Compile Include="Entities\Order.cs" />
+      <Compile Include="Entities\Department.cs" />
+      <Compile Include="Entities\Enums\WorkerLevel.cs" />
+      <Compile Include="Entities\HourContract.cs" />
+      <Compile Include="Entities\Worker.cs" />
     </ItemGroup>
 
     <ItemGroup>

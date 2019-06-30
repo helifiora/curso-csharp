@@ -1,8 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp2.2</TargetFramework>
     </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="entities\**" />
+      <Compile Include="Entities\Enums\OrderStatus.cs" />
+      <Compile Include="Entities\Order.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="entities\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="entities\**" />
+    </ItemGroup>
 
 </Project>

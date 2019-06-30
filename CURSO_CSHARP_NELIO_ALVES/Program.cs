@@ -1,6 +1,5 @@
 ﻿using System;
 using CURSO_CSHARP_NELIO_ALVES.Entities;
-using CURSO_CSHARP_NELIO_ALVES.Entities.Enums;
 
 namespace CURSO_CSHARP_NELIO_ALVES
 {
@@ -8,50 +7,32 @@ namespace CURSO_CSHARP_NELIO_ALVES
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter a department's name: ");
-            string depName = Console.ReadLine();
-
-            Console.WriteLine("Enter worker data: ");
-            Console.Write("Name: ");
-            string name = Console.ReadLine();
-
-            Console.Write("Level (Junior/MidLevel/Senior): ");
-            WorkerLevel level = Enum.Parse<WorkerLevel>(Console.ReadLine());
-
-            Console.Write("Base Salary: ");
-            double baseSalary = double.Parse(Console.ReadLine());
-
-            Department department = new Department(depName);
-            Worker worker = new Worker(name, level, baseSalary, department);
-
-            Console.Write("How many contracts to this worker? ");
-            int n = int.Parse(Console.ReadLine());
-
-
-            for (int i = 0; i < n; i++)
-            {
-                Console.WriteLine($"Enter #{i} contract data: ");
-                Console.Write("(dd/MM/yyyy): ");
-                DateTime date = DateTime.Parse(Console.ReadLine());
-
-                Console.Write("Value per Hour: ");
-                double valuePerHour = double.Parse(Console.ReadLine());
-
-                Console.Write("Duration (hours): ");
-                int hours = int.Parse(Console.ReadLine());
-                HourContract contract = new HourContract(date, valuePerHour, hours);
-                worker.AddContract(contract);
-            }
-
-            Console.WriteLine();
-            Console.Write("Enter the month and year to calculate income (mm/yyyy): ");
-            string monthYear = Console.ReadLine();
-            int month = int.Parse(monthYear.Substring(0, 2));
-            int year = int.Parse(monthYear.Substring(3, 4));
+            Comment c1 = new Comment("Have a nice Trip");
+            Comment c2 = new Comment("Wow that's awesome!");
+            Post p1 = new Post(
+                DateTime.Parse("21/06/2018 13:05:44"),
+                "Travelling to New Zealand",
+                "I'm going to visit this wonderful country!",
+                12
+            );
             
-            Console.WriteLine($"Name: {worker.Name}");
-            Console.WriteLine($"Department: {worker.Department.Name}");
-            Console.WriteLine($"Income for {monthYear}: {worker.Income(year, month)}");
+            p1.AddComment(c1);
+            p1.AddComment(c2);
+            
+            Comment c3 = new Comment("Good Night!");
+            Comment c4 = new Comment("May the force be with you");
+            Post p2 = new Post(
+                DateTime.Parse("28/07/2018 23:14:19"),
+                "Good night guys",
+                "See you tomorrow",
+                5
+            );
+            
+            p2.AddComment(c3);
+            p2.AddComment(c4);
+
+            Console.WriteLine(p1);
+            Console.WriteLine(p2);
         }
     }
 }

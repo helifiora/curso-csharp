@@ -1,6 +1,6 @@
 namespace CURSO_CSHARP_NELIO_ALVES.Entities
 {
-    public class SavingsAccount : Account
+    sealed public class SavingsAccount : Account
     {
         public double InterestRate { get; set; }
 

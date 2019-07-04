@@ -13,6 +13,12 @@ namespace CURSO_CSHARP_NELIO_ALVES.Entities
             InterestRate = interestRate;
         }
 
+        public override void Withdraw(double amount)
+        {
+            base.Withdraw(amount);
+            Balance -= 2.0;
+        }
+        
         public void UpdateBalance()
         {
             Balance *= (1 + InterestRate);

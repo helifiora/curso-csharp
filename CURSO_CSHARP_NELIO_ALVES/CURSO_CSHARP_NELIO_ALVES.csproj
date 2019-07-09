@@ -9,6 +9,8 @@
       <Compile Remove="Entities\Account.cs" />
       <Compile Remove="Entities\BusinessAccount.cs" />
       <Compile Remove="Entities\SavingsAccount.cs" />
+      <Compile Remove="Entities\Employee.cs" />
+      <Compile Remove="Entities\OutsorcedEmployee.cs" />
     </ItemGroup>
 
 </Project>

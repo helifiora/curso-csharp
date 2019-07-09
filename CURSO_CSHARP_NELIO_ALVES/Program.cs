@@ -7,42 +7,43 @@ namespace CURSO_CSHARP_NELIO_ALVES
     {
         static void Main(string[] args)
         {
-            Console.Write("Room Number: ");
-            int number = int.Parse(Console.ReadLine());
-
-            Console.Write("Check-in Date (dd/MM/yyyy): ");
-            DateTime checkin = DateTime.Parse(Console.ReadLine());
-
-            Console.Write("Check-out Date (dd/MM/yyyy): ");
-            DateTime checkout = DateTime.Parse(Console.ReadLine());
-
-            if (checkout <= checkin)
+            try
             {
-                Console.WriteLine("Error in reservation: Check-out date must be after Check-in date");
-            }
-            else
-            {
+                Console.Write("Room Number: ");
+                int number = int.Parse(Console.ReadLine());
+
+                Console.Write("Check-in Date (dd/MM/yyyy): ");
+                DateTime checkin = DateTime.Parse(Console.ReadLine());
+
+                Console.Write("Check-out Date (dd/MM/yyyy): ");
+                DateTime checkout = DateTime.Parse(Console.ReadLine());
+
                 Reservation reservation = new Reservation(number, checkin, checkout);
                 Console.WriteLine("Reservation: " + reservation);
                 Console.WriteLine();
 
                 Console.WriteLine("Enter data to update the reservation: ");
-                
+
                 Console.Write("Check-in Date (dd/MM/yyyy): ");
                 checkin = DateTime.Parse(Console.ReadLine());
 
                 Console.Write("Check-out Date (dd/MM/yyyy): ");
                 checkout = DateTime.Parse(Console.ReadLine());
 
-                string error = reservation.UpdateDates(checkin, checkout);
-                if (error != null)
-                {
-                    Console.WriteLine("Error in reservation: " + error);
-                }
-                else
-                {
-                    Console.WriteLine("Reservation Updated: " + reservation);
-                }
+                reservation.UpdateDates(checkin, checkout);
+                Console.WriteLine("Reservation Updated: " + reservation);
+            }
+            catch (DomainException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
     }

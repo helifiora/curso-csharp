@@ -33,19 +33,14 @@ namespace CURSO_CSHARP_NELIO_ALVES
 
                 Console.Write("Check-out Date (dd/MM/yyyy): ");
                 checkout = DateTime.Parse(Console.ReadLine());
-                
-                DateTime now = DateTime.Now;
-                if (checkin < now || checkout < now)
+
+                string error = reservation.UpdateDates(checkin, checkout);
+                if (error != null)
                 {
-                    Console.WriteLine("Error in reservation: Reservation dates for updates must be futures");
-                }
-                else if (checkout <= checkin)
-                {
-                    Console.WriteLine("Error in reservation: Check-out date must be after Check-in date");
+                    Console.WriteLine("Error in reservation: " + error);
                 }
                 else
                 {
-                    reservation.UpdateDates(checkin, checkout);
                     Console.WriteLine("Reservation Updated: " + reservation);
                 }
             }

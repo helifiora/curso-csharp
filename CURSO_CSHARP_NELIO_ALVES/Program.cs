@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 
 namespace CURSO_CSHARP_NELIO_ALVES
 {
@@ -6,8 +8,22 @@ namespace CURSO_CSHARP_NELIO_ALVES
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("Hello World!");
+            string sourcePath = "data.txt";
+            string targetPath = "copy.txt";
+
+            try
+            {
+                FileInfo file = new FileInfo(sourcePath);
+                Console.WriteLine(file.Directory.Name);
+                file.CopyTo(targetPath);
+
+                string[] lines = File.ReadAllLines(sourcePath);
+                Console.WriteLine(string.Join('\n', lines));
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
         }
     }
 }

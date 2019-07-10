@@ -7,26 +7,24 @@ namespace CURSO_CSHARP_NELIO_ALVES
     {
         static void Main(string[] args)
         {
-            string sourcePath = "data.txt";
-            StreamReader sr = null;
+            string path = "data.txt";
 
             try
             {
-                sr = File.OpenText(sourcePath);
-                while (!sr.EndOfStream)
+                using (FileStream fs = new FileStream(path, FileMode.Open))
                 {
-                    string line = sr.ReadLine();
-                    Console.WriteLine(line);
+                    using (StreamReader sr = new StreamReader(fs))
+                    {
+                        while (!sr.EndOfStream)
+                        {
+                            Console.WriteLine(sr.ReadLine());
+                        }
+                    }
                 }
             }
             catch (IOException e)
             {
-                Console.WriteLine("Error: " + e.Message);
-            }
-            finally
-            {
-                if(sr != null)
-                    sr.Close();
+                Console.WriteLine("Erro: " + e.Message);
             }
         }
     }

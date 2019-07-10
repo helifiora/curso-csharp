@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace CURSO_CSHARP_NELIO_ALVES
 {
@@ -8,23 +10,29 @@ namespace CURSO_CSHARP_NELIO_ALVES
     {
         static void Main(string[] args)
         {
-            string path = "data.txt";
-            string target = "target.txt";
-
+            string path = "folders";
             try
             {
-                string[] lines = File.ReadAllLines(path);
-                using (StreamWriter sw = File.AppendText(target))
+                IEnumerable<string> folder = Directory.EnumerateDirectories(path, "*.*",SearchOption.AllDirectories);
+                Console.WriteLine("Folders: ");
+                foreach (string s in folder)
                 {
-                    foreach (string line in lines)
-                    {
-                        sw.WriteLine(line.ToUpper());
-                    }
+                    Console.WriteLine(s);
                 }
+
+                IEnumerable<string> files = Directory.EnumerateFiles(path, "*.*", SearchOption.AllDirectories);
+                Console.WriteLine("Files: ");
+                foreach (string s in files)
+                {
+                    Console.WriteLine(s);
+                }
+
+                Directory.CreateDirectory("new-folder");
+
             }
             catch (IOException e)
             {
-                Console.WriteLine("Erro: " + e.Message);
+                Console.WriteLine(e.Message);
             }
         }
     }

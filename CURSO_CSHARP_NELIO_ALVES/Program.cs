@@ -10,25 +10,17 @@ namespace CURSO_CSHARP_NELIO_ALVES
     {
         static void Main(string[] args)
         {
-            string path = "folders";
+            string path = "data.txt";
             try
             {
-                IEnumerable<string> folder = Directory.EnumerateDirectories(path, "*.*",SearchOption.AllDirectories);
-                Console.WriteLine("Folders: ");
-                foreach (string s in folder)
-                {
-                    Console.WriteLine(s);
-                }
-
-                IEnumerable<string> files = Directory.EnumerateFiles(path, "*.*", SearchOption.AllDirectories);
-                Console.WriteLine("Files: ");
-                foreach (string s in files)
-                {
-                    Console.WriteLine(s);
-                }
-
-                Directory.CreateDirectory("new-folder");
-
+                Console.WriteLine("DirectorySeparatorChar: " + Path.DirectorySeparatorChar);
+                Console.WriteLine("PathSeparator: " + Path.PathSeparator);
+                Console.WriteLine("GetDirectoryName: " + Path.GetDirectoryName(path));
+                Console.WriteLine("GetFileName: " + Path.GetFileName(path));
+                Console.WriteLine("Extension: " + Path.GetExtension(path));
+                Console.WriteLine("GetFileNameWithoutExtension: " + Path.GetFileNameWithoutExtension(path));
+                Console.WriteLine("GetFullPath: " + Path.GetFullPath(path));
+                Console.WriteLine("GetTempPath: " + Path.GetTempPath());
             }
             catch (IOException e)
             {

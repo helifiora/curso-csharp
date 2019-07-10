@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace CURSO_CSHARP_NELIO_ALVES
@@ -8,17 +9,16 @@ namespace CURSO_CSHARP_NELIO_ALVES
         static void Main(string[] args)
         {
             string path = "data.txt";
+            string target = "target.txt";
 
             try
             {
-                using (FileStream fs = new FileStream(path, FileMode.Open))
+                string[] lines = File.ReadAllLines(path);
+                using (StreamWriter sw = File.AppendText(target))
                 {
-                    using (StreamReader sr = new StreamReader(fs))
+                    foreach (string line in lines)
                     {
-                        while (!sr.EndOfStream)
-                        {
-                            Console.WriteLine(sr.ReadLine());
-                        }
+                        sw.WriteLine(line.ToUpper());
                     }
                 }
             }

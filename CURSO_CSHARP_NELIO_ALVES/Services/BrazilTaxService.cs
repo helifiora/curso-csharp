@@ -1,6 +1,6 @@
 namespace CURSO_CSHARP_NELIO_ALVES.Services
 {
-    public class BrazilTaxService
+    public class BrazilTaxService : ITaxService
     {
         public double Tax(double amount)
         {

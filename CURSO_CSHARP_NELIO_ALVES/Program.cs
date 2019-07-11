@@ -29,7 +29,7 @@ namespace CURSO_CSHARP_NELIO_ALVES
             Vehicle vehicle = new Vehicle(model);
             CarRental carRental = new CarRental(start, finish, vehicle);
             
-            RentalService rentalService = new RentalService(hour, day);
+            RentalService rentalService = new RentalService(hour, day, new BrazilTaxService());
             rentalService.ProcessInvoice(carRental);
 
             Console.WriteLine("INVOICE: ");

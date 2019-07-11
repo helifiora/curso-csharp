@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
-using CURSO_CSHARP_NELIO_ALVES.Entities;
-using CURSO_CSHARP_NELIO_ALVES.Services;
+using System.IO;
+using System.Linq;
 
 namespace CURSO_CSHARP_NELIO_ALVES
 {
@@ -9,31 +10,30 @@ namespace CURSO_CSHARP_NELIO_ALVES
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter Rental Data: ");
-            
-            Console.Write("| Car Model: ");
-            string model = Console.ReadLine();
-
-            Console.Write("| Pickup (dd/MM/yyyy hh:mm): ");
-            DateTime start = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
-
-            Console.Write("| Return (dd/MM/yyyy hh:mm): ");
-            DateTime finish = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
-
-            Console.Write("| Enter Price per Hour: ");
-            double hour = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-
-            Console.Write("| Enter Price per Day: ");
-            double day = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            
-            Vehicle vehicle = new Vehicle(model);
-            CarRental carRental = new CarRental(start, finish, vehicle);
-            
-            RentalService rentalService = new RentalService(hour, day, new BrazilTaxService());
-            rentalService.ProcessInvoice(carRental);
-
-            Console.WriteLine("INVOICE: ");
-            Console.WriteLine(carRental.Invoice);
+            try
+            {
+                using (FileStream fs = new FileStream("data.txt", FileMode.Open))
+                {
+                    using (StreamReader sr = new StreamReader(fs))
+                    {
+                        List<Employee> list = new List<Employee>(50);
+                        while (!sr.EndOfStream)
+                        {
+                            list.Add(new Employee(sr.ReadLine()));
+                        }
+                        
+                        list.Sort();
+                        foreach (Employee s in list)
+                        {
+                            Console.WriteLine(s);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

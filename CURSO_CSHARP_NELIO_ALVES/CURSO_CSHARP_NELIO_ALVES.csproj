@@ -9,4 +9,19 @@
       <PackageReference Include="Tango" Version="3.1.2" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Services\**" />
+      <Compile Remove="Entities\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Services\**" />
+      <EmbeddedResource Remove="Entities\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Services\**" />
+      <None Remove="Entities\**" />
+    </ItemGroup>
+
 </Project>
